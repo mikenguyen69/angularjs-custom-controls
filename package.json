@@ -1,0 +1,10 @@
+{
+  "engines": {
+    "node": ">= 4.0"
+  },
+  "dependencies": {
+    "angularjs": "*",
+    "bower": "^1.8.4",
+    "http-server": "^0.11.1"
+  }
+}

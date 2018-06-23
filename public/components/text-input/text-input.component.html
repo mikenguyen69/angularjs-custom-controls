@@ -1,0 +1,68 @@
+<div class="form-group has-feedback"
+     ng-class="[$ctrl.sizeClass, {'has-error': $ctrl.isNotValid(), 'has-success': $ctrl.isValid()}]">
+    <label class="control-label col-sm-3 col-xs-12" for="{{$ctrl.name}}">
+        <span ng-bind="$ctrl.label"></span>
+        <small ng-if="$ctrl.isRequired">
+            <span aria-hidden="true" class="text-danger">
+                *
+            </span>
+            <span class="sr-only">
+                (field is required)
+            </span>
+        </small>
+    </label>
+    <div class="col-sm-9 col-xs-12"
+         id="{{$ctrl.name + '_input'}}">
+        <input type="text"
+               class="form-control"
+               id="{{$ctrl.name}}"
+               name="{{$ctrl.name}}"
+               ng-model="$ctrl.internalValue"
+               ng-required="$ctrl.isRequired"
+               ng-minlength="$ctrl.minLength"
+               ng-maxlength="$ctrl.maxLength"
+               ng-change="$ctrl.change()"
+               aria-describedby="{{$ctrl.name + '_validation' + ' ' + $ctrl.name + '_validationErrors' + ($ctrl.hasHelpText? (' ' + $ctrl.name + '_validation') : '')}}">
+        <span class="glyphicon form-control-feedback"
+              ng-class="{'glyphicon-remove': $ctrl.isNotValid(), 'glyphicon-ok': $ctrl.isValid()}"
+              aria-hidden="true">
+        </span>
+        <small id="{{$ctrl.name + '_validation'}}"
+               class="sr-only"
+               aria-role="alert"
+               aria-live="assertive">
+            <span ng-if="$ctrl.isValid()">
+                Field has correct value
+            </span>
+            <span ng-if="$ctrl.isNotValid()">
+                Field has incorrect value
+            </span>
+        </small>
+        <p class="help-block"
+           ng-if="$ctrl.helpText"
+           ng-bind="$ctrl.helpText"
+           id="{{$ctrl.name + '_helpText'}}"></p>
+        <p class="help-block"
+           ng-if="$ctrl.hasCharacterCounter">
+            <span ng-class="{'text-success': $ctrl.currentLength <= $ctrl.maxLength, 'text-danger' : $ctrl.currentLength > $ctrl.maxLength}">
+                Characters count: {{$ctrl.currentLength}} / {{$ctrl.maxLength}}
+            </span>
+        </p>
+        <div class="text-danger"
+             id="{{$ctrl.name + '_validationErrors'}}"
+             aria-role="alert"
+             aria-live="assertive">
+            <div ng-if="$ctrl.isFormSubmitted" ng-messages="$ctrl.form[$ctrl.name].$error">
+                <div ng-message="required">
+                    Field is required
+                </div>
+                <div ng-message="minlength">
+                    Field should have at least {{$ctrl.minLength}} characters
+                </div>
+                <div ng-message="maxlength">
+                    Field should have maximum {{$ctrl.maxLength}} characters
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

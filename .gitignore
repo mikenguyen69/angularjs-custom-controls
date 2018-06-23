@@ -1,0 +1,8 @@
+# npm
+bower_components/
+node_modules/
+npm-debug.log
+
+# deployd
+.dpd/
+data/

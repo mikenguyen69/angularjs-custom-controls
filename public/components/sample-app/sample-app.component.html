@@ -1,0 +1,44 @@
+<button type="button" class="btn btn-info" ng-click="$ctrl.load()">
+    Load "from server" (faked with $q.when())
+</button>
+<form id="elementForm" name="elementForm" class="form-horizontal"
+      novalidate=""
+      ng-submit="elementForm.$valid && $ctrl.onSubmit()">
+    <ra-text-input name="firstName"
+                   label="First name (large)"
+                   min-length="2"
+                   max-length="10"
+                   value="$ctrl.element.firstName"
+                   on-change="$ctrl.updateModel(name, value)"
+                   form="elementForm"
+                   required="true"
+                   submitted="elementForm.$submitted"
+                   size="lg"
+                   character-counter="true"></ra-text-input>
+    <ra-text-input name="middleName"
+                   label="Middle name"
+                   min-length="2"
+                   max-length="10"
+                   value="$ctrl.element.middleName"
+                   on-change="$ctrl.updateModel(name, value)" form="elementForm"
+                   required="false"
+                   submitted="elementForm.$submitted"
+                   help-text="Is not required, cause not everybody has middle name"></ra-text-input>
+    <ra-text-input name="surname"
+                   label="Surname (small)"
+                   min-length="2"
+                   max-length="15"
+                   value="$ctrl.element.surname"
+                   on-change="$ctrl.updateModel(name, value)"
+                   form="elementForm"
+                   required="true"
+                   submitted="elementForm.$submitted"
+                   size="sm"></ra-text-input>
+    <div class="form-group col-sm-offset-2">
+        <div class="col-sm-offset-3 col-sm-9 col-xs-12">
+            <button type="submit" class="btn btn-success">
+                Submit!
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+{
+    "name": "angularjs component reusable",
+    "version": "0.0.1",
+    "dependencies": {
+        "boostrap": "*",
+        "angularjs": "*",
+        "angular-messages": "*",
+        "jquery": "*"
+    },
+    "private": true
+}
