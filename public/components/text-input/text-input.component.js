@@ -2,6 +2,27 @@ angular
     .module("app")
     .component("raTextInput", raTextInputComponent());
 
+function raTextInputComponent() {
+    return {
+        templateUrl: "components/text-input/text-input.component.html",
+        controller: InputController,
+        bindings: {
+            name: "@",
+            label: "@",
+            required: "@",
+            minLength: "@",
+            maxLength: "@",
+            helpText: "@",
+            size: "@",
+            characterCounter: "@",
+            value: "<",
+            onChange: "&",
+            form: "<",
+            submitted: "<",
+        },
+    };
+}
+
 function InputController($window, $document, $timeout) {
     var $ctrl = this;
     var sizes = {
@@ -65,7 +86,7 @@ function InputController($window, $document, $timeout) {
         });
     }
 
-    $ctrl.isNotValid = function () {
+    $ctrl.isNotValid = function () {        
         return $ctrl.isFormSubmitted && (!$ctrl.form[$ctrl.name].$valid);
     }
 
@@ -74,24 +95,4 @@ function InputController($window, $document, $timeout) {
     }
 }
 
-function raTextInputComponent() {
-    return {
-        templateUrl: "components/text-input/text-input.component.html",
-        controller: InputController,
-        bindings: {
-            name: "@",
-            label: "@",
-            required: "@",
-            minLength: "@",
-            maxLength: "@",
-            helpText: "@",
-            size: "@",
-            characterCounter: "@",
-            value: "<",
-            onChange: "&",
-            form: "<",
-            submitted: "<",
-        },
-    };
-}
 

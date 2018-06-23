@@ -5,7 +5,10 @@
         "boostrap": "*",
         "angularjs": "*",
         "angular-messages": "*",
-        "jquery": "*"
+        "jquery": "*",
+        "karma": "*",
+        "jasmine": "*",
+        "angular-mocks": "*"
     },
     "private": true
 }
